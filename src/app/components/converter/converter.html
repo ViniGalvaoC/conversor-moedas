@@ -1,0 +1,38 @@
+<div class="converter-card">
+  <h2>Conversor de Moedas</h2>
+
+  <div class="amount-input">
+    <label>Valor para converter:</label>
+    <input type="number" [(ngModel)]="amount" placeholder="Ex: 100">
+  </div>
+
+  <div class="inputs">
+    <select [(ngModel)]="fromCurrency" placeholder="De (ex: USD)"> 
+      @for (c of currencies(); track c.code) {
+        <option [value]="c.code">{{ c.name }} ({{ c.code }})</option>
+      }
+    </select>
+
+    <button class="switch-btn" (click)="switchCurrencies()" title="Inverter moedas">
+    ⇄
+    </button>
+
+    <select [(ngModel)]="toCurrency">
+      @for (c of currencies(); track c.code) {
+        <option [value]="c.code">{{ c.name }} ({{ c.code }})</option>
+      }
+    </select>
+
+    <button (click)="convert()" [disabled]="loading()">
+      {{ loading() ? 'Carregando...' : 'Converter' }}
+    </button>
+  </div>
+
+  @if (result()) {
+    <div class="result-display">
+      <h3> {{ amount() }} {{ result()?.code }} vale</h3>
+      <p class="price">{{ totalConverted() | number:'1.2-2' }} {{ result()?.codein }}</p>
+      <small>Atualizado em: {{ result()?.create_date }}</small>
+    </div>
+  }
+</div>
