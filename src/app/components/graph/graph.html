@@ -1,0 +1,6 @@
+<select [(ngModel)]="selectedInterval" (ngModelChange)="onIntervalChange()">
+    @for (d of days(); track d.code) {
+      <option [value]="d.number">{{ d.code }}</option>
+    }
+</select>
+<canvas #chartCanvas></canvas>

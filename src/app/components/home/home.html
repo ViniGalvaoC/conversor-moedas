@@ -1,0 +1,16 @@
+<app-converter 
+  (currencyChanged)="handleSwitch($event)"
+  (conversionDone)="handleConversion($event)">
+</app-converter>
+
+  @if (currentResult()) {
+  <div class="result-box"></div>
+
+  <app-graph 
+    [fromCurrency]="from()" 
+    [toCurrency]="to()"
+    [selectedInterval]="currentInterval()"
+    (intervalChanged)="updateInterval($event)">
+
+  </app-graph>
+  }

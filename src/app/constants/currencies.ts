@@ -1,5 +1,3 @@
-import { signal } from "@angular/core";
-
 export const currencies = [
   { code: 'USD', name: 'Dólar Americano' },
   { code: 'BRL', name: 'Real Brasileiro' },

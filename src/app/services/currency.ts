@@ -20,4 +20,9 @@ export class Currency {
       map(data => data[key]) 
     );
   }
+
+  getHistory(days: number,code: string, codeIn: string): Observable<CurrencyInfo[]> {
+    const pair = `${code}-${codeIn}`; 
+    return this.http.get<CurrencyInfo[]>(`https://economia.awesomeapi.com.br/json/daily/${pair}/${days}`);
+  }
 }

@@ -7,7 +7,7 @@
   </div>
 
   <div class="inputs">
-    <select [(ngModel)]="fromCurrency" placeholder="De (ex: USD)"> 
+    <select [(ngModel)]="fromCurrency" (focus)="saveState()" (ngModelChange)="checkAndConvert()"> 
       @for (c of currencies(); track c.code) {
         <option [value]="c.code">{{ c.name }} ({{ c.code }})</option>
       }
@@ -17,7 +17,7 @@
     ⇄
     </button>
 
-    <select [(ngModel)]="toCurrency">
+    <select [(ngModel)]="toCurrency" (focus)="saveState()" (ngModelChange)="checkAndConvert()">
       @for (c of currencies(); track c.code) {
         <option [value]="c.code">{{ c.name }} ({{ c.code }})</option>
       }
